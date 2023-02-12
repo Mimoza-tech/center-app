@@ -26,11 +26,11 @@ export class CreateBookingComponent implements OnInit {
   }
 
   bookingForm = this.formbuilder.group({
-    id:['', Validators.required],
-    name: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-    roomNumber: ['', Validators.required],
-    startDate: ['', Validators.required],
-    endDate: ['', Validators.required]
+    id:[<number><unknown>'', Validators.required],
+    name: [<string>'', Validators.compose([Validators.required, Validators.minLength(5)])],
+    programNumber: [<number><unknown>'', Validators.required],
+    startDate: [<Date><unknown>'', Validators.required],
+    endDate: [<Date><unknown>'', Validators.required]
   });
 
   ngOnInit(): void {
@@ -56,11 +56,11 @@ export class CreateBookingComponent implements OnInit {
   }
 
   save(): void {
-    this.booking.id = this.bookingForm.get('id')?.value;
-    this.booking.name = this.bookingForm.get('name')?.value;
-    this.booking.programNumber = this.bookingForm.get('programNumber')?.value;
-    this.booking.startDate = this.bookingForm.get('startDate')?.value;
-    this.booking.endDate = this.bookingForm.get('endDate')?.value;
+    this.booking.id = <number><unknown>this.bookingForm.get('id')?.value;
+    this.booking.name = <string> this.bookingForm.get('name')?.value;
+    this.booking.programNumber = <number><unknown>this.bookingForm.get('programNumber')?.value;
+    this.booking.startDate = <Date><unknown>this.bookingForm.get('startDate')?.value;
+    this.booking.endDate = <Date><unknown>this.bookingForm.get('endDate')?.value;
 
     this.bookingService.addBooking(this.booking).subscribe();
     this.router.navigate(['bookings']);
