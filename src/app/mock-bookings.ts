@@ -10,7 +10,7 @@ export const Bookings: Booking[] = [
     },
     {
         id : 2,
-        name: "Cebi Neziri",
+        name: "Ben Richter",
         programNumber: 3,
         startDate: new Date("2023-02-12"),
         endDate: new Date("2023-02-13")

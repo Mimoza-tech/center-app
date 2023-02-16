@@ -1,58 +1,59 @@
 <div class="card bg-secondary text-white">
-  <div class="card-header">
-      <h5>Create new Booking</h5>
+    <div class="card-header">
+        <h5>Create new Booking</h5>
+    </div>
+  
+    <form [formGroup]="bookingForm" (ngSubmit)="save()">
+        <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <!--Id-->
+                        <label class="form-label">ID</label>
+                        <input type="number" formControlName="id" class="form-control" placeholder="100" />
+                    </div>
+  
+                    <div class="col">
+                        <!--ProgramNumber-->
+                        <label class="form-label">Programnumber</label>
+                        <input type="number" formControlName="programNumber" class="form-control" placeholder="Program Number" />
+                    </div>
+                </div>
+  
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <!--Name-->
+                        <label class="form-label">Guest Name</label>
+                        <input type="text" formControlName="name" class="form-control" placeholder="Your Name" />
+                    </div>
+                </div>
+  
+                <div class="row mb-2">
+                    <div class="col-4">
+                        <div  *ngIf="bookingForm.get('name')?.hasError('minlength')" class="text-danger">
+                            *Der Name ist zu kurz
+                        </div>
+                    </div>
+                </div>
+  
+                <div class="row">
+                    <div class="col">
+                        <!--StartDate-->
+                        <label class="form-label">Start Date</label>
+                        <input type="date" formControlName="startDate"  [value]="booking.startDate | date:'yyyy-MM-dd'" (input)="dateChanged($event, true)" class="form-control" />
+                    </div>
+  
+                    <div class="col">
+                        <!--EndDate-->
+                        <label class="form-label">End Date</label>
+                        <input type="date" formControlName="endDate" [value]="booking.endDate| date:'yyyy-MM-dd'" (input)="dateChanged($event, false)" class="form-control" />
+                    </div>
+                </div>
+        </div>
+  
+        <div class="card-footer">
+            <button   type="submit" class="btn btn-primary">Submit</button>
+        </div>
+  
+    </form>
   </div>
-
-  <form [formGroup]="bookingForm" (ngSubmit)="save()">
-      <div class="card-body">
-              <div class="row mb-2">
-                  <div class="col">
-                      <!--Id-->
-                      <label class="form-label">ID</label>
-                      <input type="number" formControlname="ID" class="form-control" />
-                  </div>
-
-                  <div class="col">
-                      <!--RoomNumber-->
-                      <label class="form-label">Programnumber</label>
-                      <input type="number" formControlname="Programnumber"  class="form-control" />
-                  </div>
-              </div>
-
-              <div class="row mb-2">
-                  <div class="col-4">
-                      <!--Name-->
-                      <label class="form-label">Guest Name</label>
-                      <input type="text" formControlname="name" class="form-control" />
-                  </div>
-              </div>
-
-              <div class="row mb-2">
-                  <div class="col-4">
-                      <div  *ngIf="bookingForm.get('name')?.hasError('minlength')" class="text-danger">
-                          *Der Name ist zu kurz
-                      </div>
-                  </div>
-              </div>
-
-              <div class="row">
-                  <div class="col">
-                      <!--StartDate-->
-                      <label class="form-label">Start Date</label>
-                      <input type="date" formControlName="startDate"  [value]="booking.startDate | date:'yyyy-MM-dd'" (input)="dateChanged($event, true)" class="form-control" />
-                  </div>
-
-                  <div class="col">
-                      <!--EndDate-->
-                      <label class="form-label">End Date</label>
-                      <input type="date" formControlName="endDate" [value]="booking.endDate| date:'yyyy-MM-dd'" (input)="dateChanged($event, false)" class="form-control" />
-                  </div>
-              </div>
-      </div>
-
-      <div class="card-footer">
-          <button   type="submit" class="btn btn-primary">Submit</button>
-      </div>
-
-  </form>
-</div>
+  

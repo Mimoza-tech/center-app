@@ -33,8 +33,8 @@ export class CreateBookingComponent implements OnInit {
     endDate: [<Date><unknown>'', Validators.required]
   });
 
-  ngOnInit(): void {
-    if(this.router.url != '/create'){
+  ngOnInit(): void {}
+   /* if(this.router.url != '/create'){
       var id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
       this.bookingService.getBookingById(id).subscribe((result) => {
@@ -53,7 +53,7 @@ export class CreateBookingComponent implements OnInit {
 
       });
     }
-  }
+  }*/
 
   save(): void {
     this.booking.id = <number><unknown>this.bookingForm.get('id')?.value;
